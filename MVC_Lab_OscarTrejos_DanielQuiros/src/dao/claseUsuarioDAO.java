@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import modelo.Usuario;
 
 /**
  *
@@ -10,15 +11,5 @@ import java.util.ArrayList;
 public class claseUsuarioDAO{
     
   public Usuario iniciarSesion(Usuario usuario){
-  
-  
-  
-  }
-  
-
-  
-
-  
-    
-    
+  }  
 }
