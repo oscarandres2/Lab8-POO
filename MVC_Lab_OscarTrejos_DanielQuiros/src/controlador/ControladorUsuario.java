@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import dao.claseUsuarioDAO;
 import java.awt.event.ActionListener;
 import vista.LoginForm;
 import javax.swing.*;
@@ -19,7 +20,7 @@ import vista.*;
  */
 public class ControladorUsuario implements ActionListener {    
   public LoginForm vista;
-  public UsuarioDAO dao;
+  public claseUsuarioDAO dao;
   public Usuario modelo;
   
   
@@ -32,7 +33,7 @@ public class ControladorUsuario implements ActionListener {
   public ControladorUsuario(LoginForm pVista, Usuario pModelo){
     vista = pVista;
     modelo = pModelo;
-    UsuarioDAO dao= new UsuarioDAOXML();
+    claseUsuarioDAO dao= new claseUsuarioDAO();
 
     this.vista.btIniciarLogin.addActionListener(this);
     this.vista.btCancelarLogin.addActionListener(this);    
