@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.awt.event.ActionListener;
@@ -12,7 +7,7 @@ import java.awt.event.*;
 import modelo.*;
 import vista.*;
 /**
- *Clase ControladorUusario la cual contiene los métodos
+ *Clase ControladorUsuario la cual contiene los métodos
  * y atributos necesarios.
  * 
  * @author Oscar Andres y Daniel Quiros.
@@ -81,10 +76,12 @@ public class ControladorUsuario implements ActionListener {
       }
   }
   
-  
-   public void cerrarVentanaLogin() {
-        vista.cancelarInicioSesion();
-    }
+  /**
+   * Método que permite cerrar la ventana de LogIn
+   */
+  public void cerrarVentanaLogin() {
+    vista.cancelarInicioSesion();
+  }
 
 
     
