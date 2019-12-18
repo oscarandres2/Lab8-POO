@@ -34,8 +34,8 @@ public class LoginForm extends javax.swing.JFrame {
   /**
    *Método que despliega la ventana anterior
    */
-  public void abrirVentanaAnterior(){  
-    //ventanaAnterior.setVisible(true);
+  public void abrirVentanaAnterior(LoginForm ventanaAnterior){  
+    ventanaAnterior.setVisible(true);
   }
   
   /**
