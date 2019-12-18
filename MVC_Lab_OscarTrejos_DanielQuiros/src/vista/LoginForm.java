@@ -1,40 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
+import javax.swing.JOptionPane;
+
 /**
- *
- * @author Oscar Andres
+ *Clase LoginForm la cual contiene los métodos
+ * necesarios para implementación de la interfaz.
+ * 
+ * @author Oscar Andres y Daniel Quiros
  */
 public class LoginForm extends javax.swing.JFrame {
 
   public LoginForm(){
-        initComponents();
-        
+    initComponents();       
   }
   
-  
+  /**
+   * Método que determina si se ingresaron los datos
+   * 
+   * @return un valor booleano indicando si los datos son correctos o no
+   */
   public boolean logInDatosCorrectos(){
-  
-  return true;
-  
+    if(txtNombreUsuario.equals("")){
+      JOptionPane.showMessageDialog(null, "Ingresar el nombre del usuario", "Error de ingreso", JOptionPane.PLAIN_MESSAGE);
+            return false;
+    }
+    if(txtContraseña.equals("")){
+      JOptionPane.showMessageDialog(null, "Ingresar la contraseña del usuario", "Error de ingreso", JOptionPane.PLAIN_MESSAGE);
+            return false;
+    }
+    return true;    
   }
   
-  
-  public void abrirVentanaAnterior(){
-  
-    ventanaAnterior.setVisible(true);
-  
+  /**
+   *Método que despliega la ventana anterior
+   */
+  public void abrirVentanaAnterior(){  
+    //ventanaAnterior.setVisible(true);
   }
   
-  
-  public void cancelarInicioSesion(){
-  
-    System.exit(0);
-  
+  /**
+   *Método que cancela el inicio de sesión y cierra el sistema
+   */
+  public void cancelarInicioSesion(){  
+    System.exit(0);  
   }
 
     @SuppressWarnings("unchecked")
@@ -53,6 +61,12 @@ public class LoginForm extends javax.swing.JFrame {
         lbNombreUsuario.setText("Usuario:");
 
         lbContraseña.setText("Contraseña:");
+
+        txtNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreUsuarioActionPerformed(evt);
+            }
+        });
 
         btCancelarLogin.setText("Cancelar login");
 
@@ -109,6 +123,10 @@ public class LoginForm extends javax.swing.JFrame {
     private void btIniciarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciarLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btIniciarLoginActionPerformed
+
+    private void txtNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreUsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

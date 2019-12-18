@@ -6,19 +6,17 @@ package modelo;
  */
 public class Usuario{
     
-  String nombre;
-  String contraseña;
+  private String nombre;
+  private String contraseña;
   
   public Usuario(String pNombre,String pContraseña ){
-  
-  this.nombre=pNombre;
-  this.contraseña=pContraseña;
-      
+    this.nombre = pNombre;
+    this.contraseña = pContraseña;      
   }
   
   
-  public void metodos_accesores(){
-  
+  public String getNombre(){
+    return this.nombre;  
   }
     
 }
