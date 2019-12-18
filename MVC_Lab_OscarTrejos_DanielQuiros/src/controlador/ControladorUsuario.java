@@ -12,8 +12,10 @@ import java.awt.event.*;
 import modelo.*;
 import vista.*;
 /**
- *
- * @author Oscar Andres
+ *Clase ControladorUusario la cual contiene los métodos
+ * y atributos necesarios.
+ * 
+ * @author Oscar Andres y Daniel Quiros.
  */
 public class ControladorUsuario implements ActionListener {    
   public LoginForm vista;
@@ -21,6 +23,12 @@ public class ControladorUsuario implements ActionListener {
   public Usuario modelo;
   
   
+  /**
+   * Contructor de la clase ControladorUsuario
+   * 
+   * @param pVista
+   * @param pModelo 
+   */
   public ControladorUsuario(LoginForm pVista, Usuario pModelo){
     vista = pVista;
     modelo = pModelo;
@@ -31,6 +39,11 @@ public class ControladorUsuario implements ActionListener {
     }
   
   
+  /**
+   * Método que determina cuál acción se ejecutó
+   * 
+   * @param e 
+   */
   public void actionPerformed(ActionEvent e){
     switch (e.getActionCommand()){
         case "Iniciar Login":
@@ -45,7 +58,9 @@ public class ControladorUsuario implements ActionListener {
   
   }
   
-  
+  /**
+   * Método que permite realizar LogIn
+   */
   public void LogIn(){
     if(vista.logInDatosCorrectos()==true){
       String nombreUsuario=vista.txtNombreUsuario.getText();
@@ -57,10 +72,10 @@ public class ControladorUsuario implements ActionListener {
       if(usuarioActual!=null){
         vista.setVisible(true);
         JOptionPane.showMessageDialog(vista, "Bienvenido: " + modelo.getNombre());
-      }
-              
-              
-              
+        vista.setVisible(true);
+      } else{
+        JOptionPane.showMessageDialog(vista, "El usuario indicado no existe: ");
+        }                
     } else {
         JOptionPane.showMessageDialog(vista, "Todos los datos son requeridos");
       }
