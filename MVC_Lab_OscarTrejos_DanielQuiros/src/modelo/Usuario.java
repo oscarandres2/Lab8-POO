@@ -2,7 +2,7 @@ package modelo;
 
 /**
  *
- * @author Oscar Andres
+ * @author Oscar Andres y Daniel Quirós
  */
 public class Usuario{
     
