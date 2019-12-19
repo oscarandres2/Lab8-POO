@@ -68,6 +68,8 @@ public void cancelarAgregarSala(){
         txtCapacidad = new javax.swing.JTextField();
         btAgregar = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
+        decisionIsPublica = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +99,10 @@ public void cancelarAgregarSala(){
 
         btCancelar.setText("Cancelar");
 
+        decisionIsPublica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
+
+        jLabel1.setText("Sala Pública");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,7 +119,8 @@ public void cancelarAgregarSala(){
                             .addComponent(lbUbicacion, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lbCapacidad)
-                                .addComponent(lbOrganizador)))
+                                .addComponent(lbOrganizador)
+                                .addComponent(jLabel1)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(62, 62, 62)
@@ -122,15 +129,16 @@ public void cancelarAgregarSala(){
                                     .addComponent(txtIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtOrganizador, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtCapacidad, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                                    .addComponent(txtOrganizador, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                                    .addComponent(decisionIsPublica, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
+                        .addGap(130, 130, 130)
                         .addComponent(btCancelar)
-                        .addGap(70, 70, 70)
+                        .addGap(74, 74, 74)
                         .addComponent(btAgregar)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,11 +166,15 @@ public void cancelarAgregarSala(){
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(decisionIsPublica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCancelar)
                     .addComponent(btAgregar))
-                .addGap(29, 29, 29))
+                .addContainerGap())
         );
 
         pack();
@@ -179,7 +191,9 @@ public void cancelarAgregarSala(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btAgregar;
     public javax.swing.JButton btCancelar;
+    public javax.swing.JComboBox<String> decisionIsPublica;
     public javax.swing.JLabel infoEtiqueta;
+    private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel lbCapacidad;
     public javax.swing.JLabel lbIdentificador;
     public javax.swing.JLabel lbOrganizador;
