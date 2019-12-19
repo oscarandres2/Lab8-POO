@@ -52,7 +52,7 @@ public class ControladorSala implements ActionListener {
       String organizador = vista.txtOrganizador.getText();
       
       modelo = new Sala(identificador, ubicacion, Integer.parseInt(capacidad), organizador);
-      Sala salaPorAgregar =modelo;//cambiat con base
+      Sala salaPorAgregar= dao.validarSala(modelo);
       
       if (salaPorAgregar != null) {            
         vista.setVisible(false);
