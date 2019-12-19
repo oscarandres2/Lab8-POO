@@ -20,11 +20,11 @@ public class LoginForm extends javax.swing.JFrame {
    * @return un valor booleano indicando si los datos son correctos o no
    */
   public boolean logInDatosCorrectos(){
-    if(txtNombreUsuario.equals("")){
+    if(txtNombreUsuario.equals(" ")){
       JOptionPane.showMessageDialog(null, "Ingresar el nombre del usuario", "Error de ingreso", JOptionPane.PLAIN_MESSAGE);
             return false;
     }
-    if(txtContraseña.equals("")){
+    if(txtContraseña.equals(" ")){
       JOptionPane.showMessageDialog(null, "Ingresar la contraseña del usuario", "Error de ingreso", JOptionPane.PLAIN_MESSAGE);
             return false;
     }
@@ -33,6 +33,7 @@ public class LoginForm extends javax.swing.JFrame {
   
   /**
    *Método que despliega la ventana anterior
+     * @param ventanaAnterior
    */
   public void abrirVentanaAnterior(LoginForm ventanaAnterior){  
     ventanaAnterior.setVisible(true);
