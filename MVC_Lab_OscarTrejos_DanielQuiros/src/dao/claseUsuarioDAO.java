@@ -21,8 +21,10 @@ public class claseUsuarioDAO{
   public Usuario iniciarSesion(Usuario usuario) throws SQLException{
     try{
     Connection con = getConexion();
-    PreparedStatement consulta = con.prepareStatement("select lista_usuarios from esquema.usuario where placa='" + usuario.getNombre() + "'");
+    PreparedStatement consulta = con.prepareStatement("select usuario from esquema.usuario where usuario='" + usuario.getNombre() + "'");
+        System.out.println(consulta);
     ResultSet respuesta_consulta = consulta.executeQuery();
+    System.out.println(respuesta_consulta);
     ArrayList<String> lista_usuarios = new ArrayList<>();
 
       while (respuesta_consulta.next()) {

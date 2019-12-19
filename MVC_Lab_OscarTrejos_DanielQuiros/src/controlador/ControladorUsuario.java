@@ -47,14 +47,11 @@ public class ControladorUsuario implements ActionListener {
   public void actionPerformed(ActionEvent e){
     switch (e.getActionCommand()){
         case "Iniciar login":
-    {  
         try {
             LogIn();
         } catch (SQLException ex) {
             Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-      
-    }
+        }    
             break;
         case "Cancelar login":
             cerrarVentanaLogin();
