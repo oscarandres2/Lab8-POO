@@ -48,6 +48,8 @@ public class ControladorUsuario implements ActionListener {
     switch (e.getActionCommand()){
         case "Iniciar login":
         try {
+             System.out.println("jjjj");
+
             LogIn();
         } catch (SQLException ex) {
             Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
