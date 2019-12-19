@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
-import utilidad.Conexion;
 import static utilidad.Conexion.getConexion;
 
 /**
@@ -39,9 +38,6 @@ public class claseUsuarioDAO{
                 "Error de conexion", JOptionPane.PLAIN_MESSAGE);
         }
       return null;
-
   } 
-
-      
-  }  
+}  
 

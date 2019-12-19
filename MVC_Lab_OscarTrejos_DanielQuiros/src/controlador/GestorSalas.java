@@ -18,7 +18,7 @@ public class GestorSalas {
     Usuario modelo = new Usuario("Oscar","12345");
     
     ControladorUsuario controladorUsuario = new 
-        ControladorUsuario(vista, modelo);
+    ControladorUsuario(vista, modelo);
     controladorUsuario.vista.setVisible(true);
     controladorUsuario.vista.setLocationRelativeTo(null);
   }
