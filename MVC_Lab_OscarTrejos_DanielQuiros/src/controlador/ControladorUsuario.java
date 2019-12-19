@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import vista.LoginForm;
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.*;
 import vista.*;
 /**
@@ -40,12 +43,20 @@ public class ControladorUsuario implements ActionListener {
    * 
    * @param e 
    */
+  @Override
   public void actionPerformed(ActionEvent e){
     switch (e.getActionCommand()){
-        case "Iniciar Login":
+        case "Iniciar login":
+    {  
+        try {
             LogIn();
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+    }
             break;
-        case "Cancelar LogIn":
+        case "Cancelar login":
             cerrarVentanaLogin();
             break;
         default:
@@ -56,9 +67,11 @@ public class ControladorUsuario implements ActionListener {
   
   /**
    * Método que permite realizar LogIn
+     * @throws java.sql.SQLException
    */
-  public void LogIn(){
-    if(vista.logInDatosCorrectos()==true){
+  public void LogIn() throws SQLException{
+    try{
+        if(vista.logInDatosCorrectos()==true){
       String nombreUsuario=vista.txtNombreUsuario.getText();
       String contraseña= vista.txtContraseña.getText();
       
@@ -75,6 +88,10 @@ public class ControladorUsuario implements ActionListener {
     } else {
         JOptionPane.showMessageDialog(vista, "Todos los datos son requeridos");
       }
+    }catch (SQLException ex) {
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
   }
   
   /**

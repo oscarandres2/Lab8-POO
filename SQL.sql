@@ -15,6 +15,7 @@ ubicacion varchar(50) not null,
 capacidad int not null,
 fecha date not null,
 organizador varchar(50) not null,
+foreign key(organizador)references esquema.usuario(nombre)
 --Participantes
 )
 
