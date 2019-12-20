@@ -15,7 +15,7 @@ public class Sala{
   private int capacidad;
   private Date fecha;
   private String organizador;
-  private ArrayList<String> nombreParticipantes;
+  private byte isPublica;
   /**
   * Constructor vacío de la sala
   */
@@ -25,11 +25,12 @@ public class Sala{
   /**
   * @params pIdentificador, pUbicacion, pCapacidad, pOrganizador para la creación de la sala
   */
-  public Sala(String pIdentificador,String pUbicacion, int pCapacidad, String pOrganizador){
+  public Sala(String pIdentificador,String pUbicacion, int pCapacidad, String pOrganizador, byte pIsPublica){
     this.identificador = pIdentificador;
     this.ubicacion = pUbicacion;
     this.capacidad = pCapacidad;
     this.organizador = pOrganizador;
+    this.isPublica = pIsPublica;
     setFechaCreacion();
   }
 
@@ -49,9 +50,10 @@ public class Sala{
   public String getOrganizador() {
     return organizador;
   }
-  public ArrayList<String> getNombreParticipantes() {
-    return nombreParticipantes;
-  }
+  public byte getIsPublica() {
+    return isPublica;
+  }  
+  
   public void setIdentificador(String identificador) {
     this.identificador = identificador;
   }
@@ -72,10 +74,8 @@ public class Sala{
   public void setOrganizador(String organizador) {
     this.organizador = organizador;
   }
-  /**
-  * @params pNombreParticipante agrega el participante a la lista de participantes 
-  */
-  public void agregarParticipante(String pNombreParticipante){
-    this.nombreParticipantes.add(pNombreParticipante);
+
+  public void setIsPublica(byte isPublica) {
+    this.isPublica = isPublica;
   }
 }

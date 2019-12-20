@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.Sala;
 import modelo.Usuario;
 import static utilidad.Conexion.getConexion;
 
@@ -24,9 +25,11 @@ public class GestorSalas {
   public static void main(String[] args) throws SQLException { 
 //      try{
 //    Connection con = getConexion();
+//    System.out.println("okas");
 //    JOptionPane.showMessageDialog(null, "Se pudo establecer la conexion con el servidor", 
 //                "Exito de conexion", JOptionPane.PLAIN_MESSAGE);
 //      } catch (HeadlessException | NumberFormatException e) {
+//        System.out.println("Mamador");
 //        JOptionPane.showMessageDialog(null, "No se pudo establecer la conexion con el servidor", 
 //                "Error de conexion", JOptionPane.PLAIN_MESSAGE);
 //        }
@@ -64,6 +67,19 @@ public class GestorSalas {
     ControladorUsuario(vista, modelo);
     controladorUsuario.vista.setVisible(true);
     controladorUsuario.vista.setLocationRelativeTo(null);
+
+//    LoginForm vista = new LoginForm();
+//    Usuario modelo = new Usuario("Oscar","12345");
+//    
+//    ControladorUsuario controladorUsuario = new 
+//    ControladorUsuario(vista, modelo);
+//    controladorUsuario.vista.setVisible(true);
+//    controladorUsuario.vista.setLocationRelativeTo(null);
+
+    AddSalaForm vista = new AddSalaForm();
+    vista.setVisible(true);
+    Sala modelo = new Sala();
+    ControladorSala controladorSala = new ControladorSala(vista, modelo);
   }
     
     

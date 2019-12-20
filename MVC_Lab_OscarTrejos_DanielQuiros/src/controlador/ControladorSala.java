@@ -3,6 +3,9 @@ package controlador;
 import dao.claseSalaDAO;
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Sala;
 import vista.*;
 
@@ -21,7 +24,7 @@ public class ControladorSala implements ActionListener {
   public ControladorSala(AddSalaForm pVista, Sala pModelo){
     vista = pVista;
     modelo = pModelo;
-    claseSalaDAO dao= new claseSalaDAO();
+    dao= new claseSalaDAO();
 
     this.vista.btAgregar.addActionListener(this);
     this.vista.btCancelar.addActionListener(this);
@@ -32,9 +35,13 @@ public class ControladorSala implements ActionListener {
   public void actionPerformed(ActionEvent e) {    
     switch(e.getActionCommand()){
       case "Agregar Sala":
-        agregarSala();
+        try{
+          agregarSala();
+        }catch (SQLException ex) {
+          Logger.getLogger(ControladorSala.class.getName()).log(Level.SEVERE, null, ex);
+        }
         break;
-      case "Cancelar agregar":
+      case "Cancelar":
         cerrarAgregarSala();
         break;
       default:
@@ -43,16 +50,28 @@ public class ControladorSala implements ActionListener {
   }
   /**
   * método controlador que interactua entre INTERFAZ, DAO Y MODELO para agregar la sala
+  * @throws java.sql.SQLException
   */
-  public void agregarSala(){
+  public void agregarSala() throws SQLException{
     if (vista.datosSonCorrectos() == true){
       String identificador = vista.txtIdentificador.getText();
       String ubicacion = vista.txtUbicacion.getText();
-      String capacidad = vista.txtCapacidad.getText();
+      int capacidad = Integer.parseInt(vista.txtCapacidad.getText());
       String organizador = vista.txtOrganizador.getText();
+      byte isPublica = 0;
       
-      modelo = new Sala(identificador, ubicacion, Integer.parseInt(capacidad), organizador);
-      Sala salaPorAgregar= dao.validarSala(modelo);
+      switch(vista.decisionIsPublica.getSelectedItem().toString()){
+        case "Si":
+          isPublica=1;
+          break;
+        case "No":
+          isPublica=0;
+        default:
+          break;
+      }
+      
+      modelo = new Sala(identificador, ubicacion, capacidad, organizador, isPublica);
+      Sala salaPorAgregar = dao.validarSala(modelo,vista);
       
       if (salaPorAgregar != null) {            
         vista.setVisible(false);
