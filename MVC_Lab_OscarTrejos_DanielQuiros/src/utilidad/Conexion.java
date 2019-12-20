@@ -31,7 +31,7 @@ public class Conexion {
       System.out.println(e);
     }
     return contacto;
-}
+  }
     
 
 }
