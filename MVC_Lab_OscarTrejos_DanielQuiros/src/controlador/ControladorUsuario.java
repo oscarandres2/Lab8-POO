@@ -8,8 +8,9 @@ import java.awt.event.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelo.*;
-import vista.*;
+import modelo.Usuario;
+
+
 /**
  *Clase ControladorUsuario la cual contiene los métodos
  * y atributos necesarios.
@@ -31,8 +32,8 @@ public class ControladorUsuario implements ActionListener {
   public ControladorUsuario(LoginForm pVista, Usuario pModelo){
     vista = pVista;
     modelo = pModelo;
-
-
+    dao = new claseUsuarioDAO();
+    
     this.vista.btIniciarLogin.addActionListener(this);
     this.vista.btCancelarLogin.addActionListener(this);    
     }
@@ -47,17 +48,17 @@ public class ControladorUsuario implements ActionListener {
   public void actionPerformed(ActionEvent e){
     switch (e.getActionCommand()){
         case "Iniciar login":
-        try {
+          try {
             LogIn();
-        } catch (SQLException ex) {
+          } catch (SQLException ex) {
             Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }    
+          }    
             break;
         case "Cancelar login":
-            cerrarVentanaLogin();
-            break;
+          cerrarVentanaLogin();
+          break;
         default:
-            break;
+          break;
     }
   
   }
@@ -72,10 +73,6 @@ public class ControladorUsuario implements ActionListener {
         if(vista.logInDatosCorrectos() == true){
           String nombreUsuario=vista.txtNombreUsuario.getText();
           String contraseña= vista.txtContraseña.getText();
-          System.out.println(nombreUsuario);
-          
-//          modelo.setNombre(nombreUsuario);
-//          modelo.setContraseña(contraseña);
           modelo=new Usuario(nombreUsuario,contraseña);
           Usuario usuarioActual = dao.iniciarSesion(modelo);      
           if(usuarioActual!=null){
@@ -91,8 +88,8 @@ public class ControladorUsuario implements ActionListener {
         }catch (SQLException ex) {
             Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
   }
+  
   
   /**
    * Método que permite cerrar la ventana de LogIn
@@ -100,7 +97,6 @@ public class ControladorUsuario implements ActionListener {
   public void cerrarVentanaLogin() {
     vista.cancelarInicioSesion();
   }
-
-
-    
+  
+  
 }

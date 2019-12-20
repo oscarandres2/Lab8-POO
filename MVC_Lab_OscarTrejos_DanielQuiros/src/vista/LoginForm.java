@@ -39,6 +39,7 @@ public class LoginForm extends javax.swing.JFrame {
     ventanaAnterior.setVisible(true);
   }
   
+  
   /**
    *Método que cancela el inicio de sesión y cierra el sistema
    */
