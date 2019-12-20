@@ -22,7 +22,6 @@ public class ControladorUsuario implements ActionListener {
   public claseUsuarioDAO dao;
   public Usuario modelo;
   
-  
   /**
    * Contructor de la clase ControladorUsuario
    * 
@@ -36,8 +35,7 @@ public class ControladorUsuario implements ActionListener {
     
     this.vista.btIniciarLogin.addActionListener(this);
     this.vista.btCancelarLogin.addActionListener(this);    
-    }
-  
+  }
   
   /**
    * Método que determina cuál acción se ejecutó
@@ -47,20 +45,19 @@ public class ControladorUsuario implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e){
     switch (e.getActionCommand()){
-        case "Iniciar login":
-          try {
-            LogIn();
-          } catch (SQLException ex) {
-            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
-          }    
-            break;
-        case "Cancelar login":
-          cerrarVentanaLogin();
-          break;
-        default:
-          break;
+      case "Iniciar login":
+        try {
+          LogIn();
+        }catch (SQLException ex) {
+          Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }    
+        break;
+      case "Cancelar login":
+        cerrarVentanaLogin();
+        break;
+      default:
+        break;
     }
-  
   }
   
   /**
@@ -68,35 +65,30 @@ public class ControladorUsuario implements ActionListener {
      * @throws java.sql.SQLException
    */
   public void LogIn() throws SQLException{
-    try{
-        
-        if(vista.logInDatosCorrectos() == true){
-          String nombreUsuario=vista.txtNombreUsuario.getText();
-          String contraseña= vista.txtContraseña.getText();
-          modelo=new Usuario(nombreUsuario,contraseña);
-          Usuario usuarioActual = dao.iniciarSesion(modelo);      
-          if(usuarioActual!=null){
-            vista.setVisible(true);
-            JOptionPane.showMessageDialog(vista, "Bienvenido: " + modelo.getNombre());
-            vista.setVisible(true);
-          } else{
-            JOptionPane.showMessageDialog(vista, "El usuario indicado no existe: ");
-            }                
-        } else {
-          JOptionPane.showMessageDialog(vista, "Todos los datos son requeridos");
-        }
-        }catch (SQLException ex) {
-            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    try{   
+      if(vista.logInDatosCorrectos() == true){
+        String nombreUsuario=vista.txtNombreUsuario.getText();
+        String contraseña= vista.txtContraseña.getText();
+        modelo=new Usuario(nombreUsuario,contraseña);
+        Usuario usuarioActual = dao.iniciarSesion(modelo);      
+        if(usuarioActual!=null){
+          vista.setVisible(true);
+          JOptionPane.showMessageDialog(vista, "Bienvenido: " + modelo.getNombre());
+          vista.setVisible(true);
+        }else{
+          JOptionPane.showMessageDialog(vista, "El usuario indicado no existe: ");
+        }                
+      }else{
+        JOptionPane.showMessageDialog(vista, "Todos los datos son requeridos");
+      }
+    }catch (SQLException ex) {
+      Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+    }
   }
-  
-  
   /**
-   * Método que permite cerrar la ventana de LogIn
-   */
+  * Método que permite cerrar la ventana de LogIn
+  */
   public void cerrarVentanaLogin() {
     vista.cancelarInicioSesion();
-  }
-  
-  
+  } 
 }

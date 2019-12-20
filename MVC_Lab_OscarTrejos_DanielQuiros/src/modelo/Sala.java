@@ -44,7 +44,7 @@ public class Sala{
     return capacidad;
   }
   public String getFechaCreacion(){		
-    SimpleDateFormat mascara = new SimpleDateFormat( "dd/MM/yy" );
+    SimpleDateFormat mascara = new SimpleDateFormat( "MM/dd/yyyy" );
     return mascara.format(this.fecha);
   }
   public String getOrganizador() {
