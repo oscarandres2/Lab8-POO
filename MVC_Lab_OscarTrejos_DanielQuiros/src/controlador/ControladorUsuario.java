@@ -31,7 +31,7 @@ public class ControladorUsuario implements ActionListener {
   public ControladorUsuario(LoginForm pVista, Usuario pModelo){
     vista = pVista;
     modelo = pModelo;
-    claseUsuarioDAO dao= new claseUsuarioDAO();
+
 
     this.vista.btIniciarLogin.addActionListener(this);
     this.vista.btCancelarLogin.addActionListener(this);    
@@ -48,8 +48,6 @@ public class ControladorUsuario implements ActionListener {
     switch (e.getActionCommand()){
         case "Iniciar login":
         try {
-             System.out.println("jjjj");
-
             LogIn();
         } catch (SQLException ex) {
             Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,24 +68,27 @@ public class ControladorUsuario implements ActionListener {
    */
   public void LogIn() throws SQLException{
     try{
-        if(vista.logInDatosCorrectos()==true){
-      String nombreUsuario=vista.txtNombreUsuario.getText();
-      String contraseña= vista.txtContraseña.getText();
-      
-      modelo=new Usuario(nombreUsuario,contraseña);
-      Usuario usuarioActual= dao.iniciarSesion(modelo);
-      
-      if(usuarioActual!=null){
-        vista.setVisible(true);
-        JOptionPane.showMessageDialog(vista, "Bienvenido: " + modelo.getNombre());
-        vista.setVisible(true);
-      } else{
-        JOptionPane.showMessageDialog(vista, "El usuario indicado no existe: ");
-        }                
-    } else {
-        JOptionPane.showMessageDialog(vista, "Todos los datos son requeridos");
-      }
-    }catch (SQLException ex) {
+        
+        if(vista.logInDatosCorrectos() == true){
+          String nombreUsuario=vista.txtNombreUsuario.getText();
+          String contraseña= vista.txtContraseña.getText();
+          System.out.println(nombreUsuario);
+          
+//          modelo.setNombre(nombreUsuario);
+//          modelo.setContraseña(contraseña);
+          modelo=new Usuario(nombreUsuario,contraseña);
+          Usuario usuarioActual = dao.iniciarSesion(modelo);      
+          if(usuarioActual!=null){
+            vista.setVisible(true);
+            JOptionPane.showMessageDialog(vista, "Bienvenido: " + modelo.getNombre());
+            vista.setVisible(true);
+          } else{
+            JOptionPane.showMessageDialog(vista, "El usuario indicado no existe: ");
+            }                
+        } else {
+          JOptionPane.showMessageDialog(vista, "Todos los datos son requeridos");
+        }
+        }catch (SQLException ex) {
             Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     

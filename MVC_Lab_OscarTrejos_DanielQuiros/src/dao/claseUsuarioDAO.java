@@ -20,24 +20,21 @@ public class claseUsuarioDAO{
   public Usuario iniciarSesion(Usuario usuario) throws SQLException{
     try{
     Connection con = getConexion();
-                System.out.println("1");
-
     PreparedStatement consulta = con.prepareStatement("select nombre from esquema.usuario where nombre='" + usuario.getNombre() + "'");
-            System.out.println("2");
 
-        System.out.println(consulta);
     ResultSet respuesta_consulta = consulta.executeQuery();
-    System.out.println(respuesta_consulta);
     ArrayList<String> lista_usuarios = new ArrayList<>();
 
       while (respuesta_consulta.next()) {
-        lista_usuarios.add(respuesta_consulta.getString("usuario"));
+        lista_usuarios.add(respuesta_consulta.getString("nombre"));
       }
-      if (lista_usuarios.isEmpty() == false) {
+      if (lista_usuarios.isEmpty() == true) {
         JOptionPane.showMessageDialog(null, "El usuario no existe");
         return null;
-      }
-     return usuario;  
+      } else{
+        JOptionPane.showMessageDialog(null, "El usuario existe");
+        return usuario;
+        }  
   
     } catch (HeadlessException | NumberFormatException e) {
         JOptionPane.showMessageDialog(null, "No se pudo establecer la conexion con el servidor", 

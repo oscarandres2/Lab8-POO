@@ -31,5 +31,16 @@ public class Usuario{
   public String getContraseña(){
     return this.contraseña;  
   }
-    
+  
+  
+  public void setNombre(String pNombre){
+     this.nombre=pNombre;  
+  }
+  
+  
+  public void setContraseña(String pContraseña){
+     this.contraseña=pContraseña;  
+  }
+
+  
 }
