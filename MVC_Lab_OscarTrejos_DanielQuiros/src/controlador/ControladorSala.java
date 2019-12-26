@@ -38,7 +38,6 @@ public class ControladorSala implements ActionListener {
         try{
           agregarSala();
         }catch (SQLException ex) {
-          Logger.getLogger(ControladorSala.class.getName()).log(Level.SEVERE, null, ex);
         }
         break;
       case "Cancelar":
@@ -73,12 +72,12 @@ public class ControladorSala implements ActionListener {
       modelo = new Sala(identificador, ubicacion, capacidad, organizador, isPublica);
       Sala salaPorAgregar = dao.validarSala(modelo,vista);
       
-      if (salaPorAgregar != null) {            
-        vista.setVisible(false);
-        JOptionPane.showMessageDialog(vista, "Se ha agregado con éxito: ");
-        vista.setVisible(true);
+      if (salaPorAgregar == null) {      
+        JOptionPane.showMessageDialog(vista, "Inténtelo de nuevo");
       }else {
-        JOptionPane.showMessageDialog(vista, "La sala ya ha sido agregada");
+        vista.setVisible(false);
+        JOptionPane.showMessageDialog(vista, "Se ha agregado con éxito ");
+        vista.setVisible(true);
       }
       
     }else {

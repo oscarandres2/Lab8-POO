@@ -32,3 +32,4 @@ insert into esquema.sala(identificador,ubicacion,capacidad,fecha,isPublica,organ
 ('56127','San José',30,'01/12/2019',1,'daniel98'),
 ('78909','Turrialba',20,'05/11/2019',0,'oscar99');
 
+delete esquema.sala

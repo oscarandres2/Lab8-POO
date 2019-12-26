@@ -45,6 +45,4 @@ public class Usuario{
   public void setContraseña(String pContraseña){
      this.contraseña=pContraseña;  
   }
-
-  
 }

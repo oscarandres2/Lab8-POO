@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
-import static utilidad.Conexion.getConexion;
+import static conexion.Conexion.getConexion;
 
 /**
  *
@@ -16,14 +16,17 @@ import static utilidad.Conexion.getConexion;
  * @version 18/12/19
  */
 public class claseUsuarioDAO{
-    
+  
+  /**
+  *
+  * @param usuario método controlador del usuario
+  */
   public Usuario iniciarSesion(Usuario usuario) throws SQLException{
     try{
       Connection con = getConexion();
-      PreparedStatement consulta = con.prepareStatement("select nombre,contraseña from esquema.usuario where nombre='" + usuario.getNombre() + "' and contraseña='"+usuario.getContraseña()+"'");
-      System.out.println(consulta);
+      PreparedStatement consulta = con.prepareStatement("select nombre,contraseña from esquema.usuario where "
+          + "nombre='" + usuario.getNombre() + "' and contraseña='"+usuario.getContraseña()+"'");
       ResultSet respuesta_consulta = consulta.executeQuery();
-      System.out.println(respuesta_consulta);
       ArrayList<String> lista_usuarios = new ArrayList<>();
       while (respuesta_consulta.next()) {
         lista_usuarios.add(respuesta_consulta.getString("nombre"));
@@ -35,11 +38,11 @@ public class claseUsuarioDAO{
           JOptionPane.showMessageDialog(null, "Ingreso al usuario de manera exitosa! ");
           return usuario;
         }  
-    } catch (HeadlessException | NumberFormatException e) {
+    }catch (HeadlessException | NumberFormatException e) {
         JOptionPane.showMessageDialog(null, "No se pudo establecer la conexion con el servidor", 
-                "Error de conexion", JOptionPane.PLAIN_MESSAGE);
-       }
+            "Error de conexion", JOptionPane.PLAIN_MESSAGE);
+    }
       return null;
-      }
+  }
 }  
 
